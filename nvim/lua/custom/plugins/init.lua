@@ -11,6 +11,12 @@ return {
     },
     config = function()
       require('nvim-tree').setup {}
+      vim.api.nvim_set_keymap('n', '<leader>nt', '<cmd>NvimTreeToggle<CR>',
+        {
+          desc = 'NvimTree: Toggle',
+          noremap = true,
+          silent = true
+        })
     end,
   },
   {
