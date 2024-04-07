@@ -1,6 +1,16 @@
 return {
   {
     'github/copilot.vim',
+    config = function()
+      -- Disable copilot on startup
+      vim.cmd(":Copilot disable")
+      vim.api.nvim_set_keymap('n', '<leader>co', '<cmd>Copilot<CR>',
+        {
+          desc = '[c][o]pilot',
+          noremap = true,
+          silent = true
+        })
+    end,
   },
   {
     'nvim-tree/nvim-tree.lua',
