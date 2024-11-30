@@ -13,4 +13,6 @@ waybar &
 
 dunst &
 
-swayidle -w timeout 150 'swaylock -f' timeout 200 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
+hypridle
+
+# swayidle -w timeout 150 'swaylock -f' timeout 200 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
