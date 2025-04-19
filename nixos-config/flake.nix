@@ -10,7 +10,6 @@
   outputs = {
     self,
     nixpkgs,
-    ...
   }: let
     lib = nixpkgs.lib;
   in {
@@ -19,8 +18,18 @@
         system = "x86_64-linux";
         modules = [
           ./cosmic/flake.nix
-          ./core/core.nix
-          ./hardware-configuration.nix
+        ];
+      };
+      wayland = lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./hyprland/flake.nix
+        ];
+      };
+      kde = lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./kde/flake.nix
         ];
       };
     };

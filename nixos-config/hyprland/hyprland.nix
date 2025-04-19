@@ -1,7 +1,12 @@
-
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ../system/core.nix
+  ];
+
   programs.hyprland = {
     enable = true;
   };
@@ -33,6 +38,5 @@
 
     # Idle timeout
     hypridle
-
   ];
 }
