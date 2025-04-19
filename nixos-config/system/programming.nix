@@ -1,19 +1,14 @@
-
-{ config, pkgs, ... }:
-
-let
-  unstable = import <nixos-unstable> { 
-      config = { 
-        allowUnfree = true; 
-      }; 
-  };
-in 
 {
-  imports =
-    [
-      ./neovim.nix
-    ];
-
+  config,
+  pkgs,
+  ...
+}: let
+  unstable = import <nixos-unstable> {
+    config = {
+      allowUnfree = true;
+    };
+  };
+in {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
