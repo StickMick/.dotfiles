@@ -17,19 +17,19 @@
       cosmic = lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./cosmic/flake.nix
+          ./cosmic/cosmic.nix
         ];
       };
       wayland = lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hyprland/flake.nix
+          ./hyprland/hyprland.nix
         ];
       };
       kde = lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./kde/flake.nix
+          ./kde/iGPU.nix
         ];
       };
     };
