@@ -17,7 +17,11 @@
     nixosConfigurations = {
       cosmic = lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [./cosmic/cosmic.nix];
+        modules = [
+          ./cosmic/flake.nix
+          ./core/core.nix
+          ./hardware-configuration.nix
+        ];
       };
     };
   };
