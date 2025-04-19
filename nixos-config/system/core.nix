@@ -7,7 +7,7 @@
     ./hardware-configuration.nix
     ./audio.nix
     ./fonts.nix
-    ./grub.nix
+    # ./grub.nix
     ./programming.nix
     ./programs.nix
     ./services.nix
