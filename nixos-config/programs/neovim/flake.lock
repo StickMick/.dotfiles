@@ -51,30 +51,13 @@
         "type": "github"
       }
     },
-    "neovimConfig": {
-      "inputs": {
-        "nixpkgs": "nixpkgs",
-        "nvf": "nvf"
-      },
-      "locked": {
-        "path": "./programs/neovim",
-        "type": "path"
-      },
-      "original": {
-        "path": "./programs/neovim",
-        "type": "path"
-      },
-      "parent": []
-    },
     "nil": {
       "inputs": {
         "flake-utils": [
-          "neovimConfig",
           "nvf",
           "flake-utils"
         ],
         "nixpkgs": [
-          "neovimConfig",
           "nvf",
           "nixpkgs"
         ],
@@ -141,22 +124,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
-      "locked": {
-        "lastModified": 1744932701,
-        "narHash": "sha256-fusHbZCyv126cyArUwwKrLdCkgVAIaa/fQJYFlCEqiU=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nvf": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -182,14 +149,13 @@
     },
     "root": {
       "inputs": {
-        "neovimConfig": "neovimConfig",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs",
+        "nvf": "nvf"
       }
     },
     "rust-overlay": {
       "inputs": {
         "nixpkgs": [
-          "neovimConfig",
           "nvf",
           "nil",
           "nixpkgs"
