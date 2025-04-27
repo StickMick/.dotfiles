@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../system/core.nix
   ];
@@ -11,5 +13,4 @@
     enable = true;
     wayland.enable = true;
   };
-
-};
+}
