@@ -32,6 +32,12 @@
           ./kde/iGPU.nix
         ];
       };
+      wsl = lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./wsl/wsl.nix
+        ];
+      };
     };
   };
 }
