@@ -5,11 +5,16 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
+    nvf,
   }: let
     lib = nixpkgs.lib;
   in {
@@ -36,6 +41,7 @@
         system = "x86_64-linux";
         modules = [
           ./wsl/wsl.nix
+          nvf.nixosModules.default
         ];
       };
     };
