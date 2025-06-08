@@ -40,6 +40,8 @@ in
     orca-slicer
     unityhub
 
+    bolt-launcher
+
     lutris
     (lutris.override {
       extraLibraries =  pkgs: [
