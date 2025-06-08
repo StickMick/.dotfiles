@@ -21,8 +21,50 @@
       vim = {
         theme = {
           enable = true;
-          name = "gruvbox";
+          name = "onedark";
           style = "dark";
+        };
+
+        filetree = {
+          neo-tree = {
+            enable = true;
+          };
+        };
+
+        binds = {
+          whichKey = {
+            enable = true;
+          };
+          cheatsheet = {
+            enable = true;
+          };
+          hardtime-nvim = {
+            enable = true;
+          };
+        };
+
+        git = {
+          enable = true;
+          gitsigns.enable = true;
+          gitsigns.codeActions.enable = false;
+        };
+
+        minimap = {
+          minimap-vim.enable = false;
+          codewindow.enable = true;
+        };
+
+        dashboard = {
+          dashboard-nvim.enable = false;
+          alpha.enable = true;
+        };
+
+        notify = {
+          nvim-notify.enable = true;
+        };
+
+        spellcheck = {
+          enable = true;
         };
 
         lsp = {
@@ -31,15 +73,13 @@
           lightbulb.enable = true;
           lspsaga.enable = false;
           trouble.enable = true;
-          lspSignature.enable = true;
+          lspSignature.enable = false; # conflicts with blink
           otter-nvim.enable = true;
           nvim-docs-view.enable = true;
           formatOnSave = true;
         };
 
-        statusline.lualine.enable = true;
         telescope.enable = true;
-        autocomplete.nvim-cmp.enable = true;
 
         languages = {
           enableFormat = true;
@@ -51,12 +91,19 @@
           csharp.enable = true;
         };
 
+        autopairs.nvim-autopairs.enable = true;
+
+        autocomplete = {
+          blink-cmp.enable = true;
+        };
+
         debugger = {
           nvim-dap = {
             enable = true;
             ui.enable = true;
           };
         };
+
         visuals = {
           nvim-scrollbar.enable = true;
           nvim-web-devicons.enable = true;
@@ -69,6 +116,48 @@
 
           # Fun
           cellular-automaton.enable = false;
+        };
+
+        statusline = {
+          lualine = {
+            enable = true;
+            theme = "onedark";
+          };
+        };
+
+        snippets.luasnip.enable = true;
+
+        tabline = {
+          nvimBufferline.enable = true;
+        };
+
+        treesitter.context.enable = true;
+
+        projects = {
+          project-nvim.enable = true;
+        };
+
+        utility = {
+          ccc.enable = false;
+          vim-wakatime.enable = false;
+          yanky-nvim.enable = true;
+          icon-picker.enable = true;
+          surround.enable = true;
+          leetcode-nvim.enable = true;
+          multicursors.enable = true;
+
+          motion = {
+            hop.enable = true;
+            leap.enable = true;
+            precognition.enable = true;
+          };
+        };
+
+        terminal = {
+          toggleterm = {
+            enable = true;
+            lazygit.enable = true;
+          };
         };
       };
     };
