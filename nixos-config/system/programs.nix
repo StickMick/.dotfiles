@@ -17,8 +17,11 @@ in
   nixpkgs.config.allowUnfree = true;
 
   services.flatpak.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  xdg.portal.config.common.default = "gtk";
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "gtk";
+  };
 
   programs.steam = {
     enable = true;
@@ -28,6 +31,8 @@ in
   };
 
   environment.systemPackages = with pkgs; [
+    git
+
     steam
     discord
     spotify

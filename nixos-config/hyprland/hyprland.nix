@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ../system/core.nix
+    # ../system/core.nix
   ];
 
   programs.hyprland = {

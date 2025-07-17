@@ -13,7 +13,6 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
-    jetbrains-toolbox
     git
     gh
     zig
@@ -30,5 +29,8 @@ in {
     wezterm
 
     unityhub
+
+    jetbrains.rider
+    jetbrains.webstorm
   ];
 }

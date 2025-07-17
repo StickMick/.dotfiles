@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ../system/core.nix
+    # ../system/core.nix
   ];
 
   services.displayManager.cosmic-greeter.enable = true;

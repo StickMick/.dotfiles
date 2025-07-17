@@ -19,30 +19,25 @@
     lib = nixpkgs.lib;
   in {
     nixosConfigurations = {
-      cosmic = lib.nixosSystem {
+      nixos = lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
-          ./cosmic/cosmic.nix
-        ];
-      };
-      wayland = lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./hyprland/hyprland.nix
-        ];
-      };
-      kde = lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./kde/iGPU.nix
-        ];
+	modules = [
+	  ./system/core.nix
+          {
+	    specialisation = {
+	      cosmic.configuration = import ./cosmic/cosmic.nix;
+	      hyprland.configuration = import ./hyprland/hyprland.nix;
+	      kde.configuration = import ./kde/iGPU.nix;
+	    };
+	  }
+	];
       };
       wsl = lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [
-          ./wsl/wsl.nix
-          nvf.nixosModules.default
-        ];
+	modules = [
+	  ./wsl/wsl.nix
+	  nvf.nixosModules.default
+	];
       };
     };
   };
