@@ -45,6 +45,9 @@ in
     orca-slicer
     unityhub
 
+    # moonlander
+    keymapp
+
     bolt-launcher
 
     lutris
