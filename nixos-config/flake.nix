@@ -25,9 +25,9 @@
 	  ./system/core.nix
           {
 	    specialisation = {
+	      kde.configuration = import ./kde/kde.nix;
 	      cosmic.configuration = import ./cosmic/cosmic.nix;
 	      hyprland.configuration = import ./hyprland/hyprland.nix;
-	      kde.configuration = import ./kde/iGPU.nix;
 	    };
 	  }
 	];

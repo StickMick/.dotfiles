@@ -47,14 +47,16 @@ in
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
-    layout = "au";
-    xkbVariant = "";
+    xkb = {
+     variant = "";
+     layout = "au";
+    };
   };
 
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport32Bit = true;
+      enable32Bit = true;
     };
     nvidia = {
       modesetting.enable = true;
@@ -70,7 +72,7 @@ in
         #  enableOffloadCmd = true;
         #};
         intelBusId = "PCI:0:2:0";
-	nvidiaBusId = "PCI:1:0:0";
+        nvidiaBusId = "PCI:1:0:0";
       };
     };
   };

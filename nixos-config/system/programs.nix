@@ -48,7 +48,7 @@ in
     # moonlander
     keymapp
 
-    bolt-launcher
+    # bolt-launcher
 
     lutris
     (lutris.override {
