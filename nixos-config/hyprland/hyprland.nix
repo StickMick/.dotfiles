@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    # ../system/core.nix
   ];
 
   programs.hyprland = {
@@ -23,7 +22,7 @@
     libnotify
     swww
     kitty
-    rofi-wayland
+    rofi
     networkmanagerapplet
 
     # Wallpaper and colour

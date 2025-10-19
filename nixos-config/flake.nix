@@ -21,23 +21,23 @@
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         system = "x86_64-linux";
-	modules = [
-	  ./system/core.nix
+        modules = [
+          ./system/core.nix
           {
-	    specialisation = {
-	      kde.configuration = import ./kde/kde.nix;
-	      cosmic.configuration = import ./cosmic/cosmic.nix;
-	      hyprland.configuration = import ./hyprland/hyprland.nix;
-	    };
-	  }
-	];
+            specialisation = {
+              kde.configuration = import ./kde/kde.nix;
+              cosmic.configuration = import ./cosmic/cosmic.nix;
+              hyprland.configuration = import ./hyprland/hyprland.nix;
+            };
+          }
+        ];
       };
       wsl = lib.nixosSystem {
         system = "x86_64-linux";
-	modules = [
-	  ./wsl/wsl.nix
-	  nvf.nixosModules.default
-	];
+        modules = [
+          ./wsl/wsl.nix
+          nvf.nixosModules.default
+        ];
       };
     };
   };

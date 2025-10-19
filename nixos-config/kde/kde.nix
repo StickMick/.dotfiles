@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    # ../system/core.nix
   ];
 
   services.desktopManager.plasma6.enable = true;
