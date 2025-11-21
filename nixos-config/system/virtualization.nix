@@ -1,5 +1,5 @@
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, system, ... }:
 {
   # Enable dconf (System Management Tool)
   programs.dconf.enable = true;
@@ -8,25 +8,23 @@
   users.users.stick.extraGroups = [ "libvirtd" ];
 
   # Install necessary packages
-  environment.systemPackages = with pkgs; [
-    virt-manager
-    virt-viewer
-    spice spice-gtk
-    spice-protocol
-    win-virtio
-    win-spice
-    adwaita-icon-theme
+  environment.systemPackages = [
+    pkgs.virt-manager
+    pkgs.virt-viewer
+    pkgs.spice
+    pkgs.spice-gtk
+    pkgs.spice-protocol
+    pkgs.win-virtio
+    pkgs.win-spice
+    pkgs.adwaita-icon-theme
+    pkgs.freerdp
+    inputs.winboat.packages.${system}.winboat
   ];
 
   # Manage the virtualisation services
   virtualisation = {
     libvirtd = {
       enable = true;
-      qemu = {
-        swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
-      };
     };
     spiceUSBRedirection.enable = true;
   };

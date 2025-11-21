@@ -9,18 +9,27 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    winboat = {
+      url = "github:TibixDev/winboat";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = {
+  outputs = inputs@{
     self,
     nixpkgs,
     nvf,
+    ...
   }: let
+    inherit (self) outputs;
     lib = nixpkgs.lib;
+    system = "x86_64-linux";
   in {
     nixosConfigurations = {
       nixos = lib.nixosSystem {
-        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs system;
+        };
         modules = [
           ./system/core.nix
           {
@@ -33,7 +42,9 @@
         ];
       };
       wsl = lib.nixosSystem {
-        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs system;
+        };
         modules = [
           ./wsl/wsl.nix
           nvf.nixosModules.default

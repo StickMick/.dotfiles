@@ -19,7 +19,11 @@ in
     };
   };
 
-  boot.kernelParams = [ "video=HDMI-A-2:3440x1440@60" ];
+
+  boot.kernelParams = [
+    "video=HDMI-A-2:3440x1440@60"
+    "nvidia.env.preserve_video_memory_allocations=1"
+  ];
 
   networking.hostName = "nixos"; # Define your hostname.
 
@@ -64,7 +68,7 @@ in
       powerManagement.finegrained = false;
       open = false;
       nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
       prime = {
       	sync.enable = true;
         #offload = {
