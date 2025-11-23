@@ -4,6 +4,10 @@
   ...
 }: {
       vim = {
+        options = {
+          shada = "'100,<50,s10,h";  # safe default enabling shada with common parameters
+        };
+
         theme = {
           enable = true;
           name = "onedark";
