@@ -148,5 +148,48 @@
         lazygit.enable = true;
       };
     };
+
+    # Enable GitHub Copilot using NVF's assistant.copilot options
+    assistant = {
+      copilot = {
+        enable = true;            # turns on Copilot
+        cmp.enable = true;        # integrate Copilot with nvim-cmp
+
+        # Minimal setup options passed to copilot.lua.setup()
+        setupOpts = {
+          panel = {
+            enabled = true;
+            layout = {
+              position = "bottom";
+              ratio = 0.4;
+            };
+          };
+
+          suggestion = {
+            enabled = true;
+            auto_trigger = true;
+          };
+        };
+
+        # Optional: customize key mappings (defaults shown here; change if desired)
+        mappings = {
+          panel = {
+            accept = "<CR>";
+            jumpNext = "]]";
+            jumpPrev = "[[";
+            open = "<M-CR>";
+            refresh = "gr";
+          };
+          suggestion = {
+            accept = "<M-l>";
+            acceptLine = null;
+            acceptWord = null;
+            dismiss = "<C-]>";
+            next = "<M-]>";
+            prev = "<M-[>";
+          };
+        };
+      };
+    };
   };
 }
