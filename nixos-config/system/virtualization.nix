@@ -14,11 +14,10 @@
     pkgs.spice
     pkgs.spice-gtk
     pkgs.spice-protocol
-    pkgs.win-virtio
+    pkgs.virtio-win
     pkgs.win-spice
     pkgs.adwaita-icon-theme
     pkgs.freerdp
-    inputs.winboat.packages.${system}.winboat
   ];
 
   # Manage the virtualisation services

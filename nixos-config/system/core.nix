@@ -11,6 +11,7 @@
     ./services.nix
     ./users.nix
     ./virtualization.nix
+    ./obs.nix
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
