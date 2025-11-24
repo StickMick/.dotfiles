@@ -8,6 +8,7 @@
     ./audio.nix
     ./fonts.nix
     ./programs.nix
+    ./programming.nix
     ./services.nix
     ./users.nix
     ./virtualization.nix
