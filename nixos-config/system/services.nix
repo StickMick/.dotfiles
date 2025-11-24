@@ -1,24 +1,24 @@
-{ config, pkgs, ... }:
-
-let
-  unstable = import <nixos-unstable> { 
-      config = { 
-        allowUnfree = true; 
-      }; 
-  };
-in 
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  config,
+  pkgs,
+  ...
+}: let
+  unstable = import <nixos-unstable> {
+    config = {
+      allowUnfree = true;
+    };
+  };
+in {
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Bootloader.
   boot = {
-    extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
+    extraModulePackages = [config.boot.kernelPackages.nvidia_x11];
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
   };
-
 
   boot.kernelParams = [
     "video=HDMI-A-2:3440x1440@60"
@@ -50,31 +50,21 @@ in
 
   services.xserver = {
     enable = true;
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = ["nvidia"];
     xkb = {
-     variant = "";
-     layout = "au";
+      variant = "";
+      layout = "au";
     };
   };
 
   hardware = {
     graphics = {
       enable = true;
-      enable32Bit = true;
     };
     nvidia = {
-      modesetting.enable = true;
-      powerManagement.enable = false;
-      powerManagement.finegrained = false;
-      open = false;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      open = true;
       prime = {
-      	sync.enable = true;
-        #offload = {
-        #  enable = true;
-        #  enableOffloadCmd = true;
-        #};
+        sync.enable = true;
         intelBusId = "PCI:0:2:0";
         nvidiaBusId = "PCI:1:0:0";
       };
