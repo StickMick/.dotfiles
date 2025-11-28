@@ -1,17 +1,13 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   fonts.fontconfig.enable = true;
 
-  fonts.packages = with pkgs; [
-    fira-code
-    fira-code-symbols
-    font-awesome
-    liberation_ttf
-    mplus-outline-fonts.githubRelease
-    noto-fonts
-    noto-fonts-color-emoji
-    proggyfonts
-  ];
+  fonts = {
+    enableDefaultFonts = true;
+    enableGhostscriptFonts = true;
+    fontconfig.defaultFonts = {
+      serif = ["Noto Serif"];
+      sansSerif = ["Noto Sans"];
+      monospace = ["JetBrainsMono Nerd Font"];
+    };
+  };
 }

@@ -13,12 +13,30 @@
     ./users.nix
     ./virtualization.nix
     ./obs.nix
+    ./media.nix
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
     "libxml2-2.13.8"
   ];
 
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+
+  nix.optimise = {
+    automatic = true;
+    dates = ["weekly"];
+  };
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = "/etc/nixos#hostname";
+    dates = "04:00";
+    allowReboot = false;
+  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

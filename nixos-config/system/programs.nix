@@ -1,15 +1,14 @@
-
-{ config, pkgs, ... }:
-
-let
-  unstable = import <nixos-unstable> { 
-      config = { 
-        allowUnfree = true; 
-      }; 
-  };
-in 
 {
-  
+  config,
+  pkgs,
+  ...
+}: let
+  unstable = import <nixos-unstable> {
+    config = {
+      allowUnfree = true;
+    };
+  };
+in {
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -19,7 +18,7 @@ in
   services.flatpak.enable = true;
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
     config.common.default = "gtk";
   };
 
@@ -52,7 +51,7 @@ in
 
     lutris
     (lutris.override {
-      extraLibraries =  pkgs: [
+      extraLibraries = pkgs: [
         # List library dependencies here
       ];
       extraPkgs = pkgs: [
