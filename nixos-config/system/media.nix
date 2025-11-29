@@ -14,4 +14,9 @@ in {
     openFirewall = true;
     user = "stick";
   };
+
+  environment.systemPackages = with pkgs; [
+    qbittorrent
+    protonvpn-gui
+  ];
 }
