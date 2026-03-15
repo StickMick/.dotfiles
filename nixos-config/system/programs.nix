@@ -40,8 +40,10 @@ in {
     gcc
     zip
     unzip
+
     # bambu-studio
     orca-slicer
+
     unityhub
 
     # moonlander
@@ -67,5 +69,10 @@ in {
     #System Monitor
     btop
     nvtopPackages.full
+
+    libreoffice-qt
+
+    # Configured NVF Neovim from local flake
+    (builtins.getFlake (toString ../programs/nvf)).packages.${pkgs.system}.default
   ];
 }
