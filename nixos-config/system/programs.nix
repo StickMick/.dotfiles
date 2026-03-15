@@ -65,6 +65,7 @@ in {
     #Terminal
     ghostty
     tmux
+    zellij
 
     #System Monitor
     btop
@@ -75,4 +76,20 @@ in {
     # Configured NVF Neovim from local flake
     (builtins.getFlake (toString ../programs/nvf)).packages.${pkgs.system}.default
   ];
+
+  programs.bash.interactiveShellInit = ''
+    if [[ -z "$ZELLIJ" ]]; then
+      zellij
+    fi
+  '';
+
+  system.activationScripts.zellijConfig = let
+    home = config.users.users.stick.home;
+  in {
+    text = ''
+      mkdir -p ${home}/.config/zellij
+      ln -sf ${home}/.dotfiles/nixos-config/programs/zellij/config.kdl \
+        ${home}/.config/zellij/config.kdl
+    '';
+  };
 }

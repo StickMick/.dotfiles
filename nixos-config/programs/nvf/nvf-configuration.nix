@@ -90,6 +90,71 @@
       nvim-dap = {
         enable = true;
         ui.enable = true;
+        sources.csharp = ''
+          local dap = require("dap")
+
+          dap.adapters.coreclr = {
+            type = "executable",
+            command = "${pkgs.netcoredbg}/bin/netcoredbg",
+            args = { "--interpreter=vscode" },
+          }
+
+          dap.configurations.cs = {
+            {
+              type = "coreclr",
+              name = "Launch",
+              request = "launch",
+              program = function()
+                local dlls = vim.fn.glob(vim.fn.getcwd() .. "/**/bin/Debug/**/*.dll", false, true)
+                dlls = vim.tbl_filter(function(p)
+                  return not p:match("%.resources%.dll$") and not p:match("/ref/")
+                end, dlls)
+                if #dlls == 0 then
+                  return vim.fn.input("Path to DLL: ", vim.fn.getcwd() .. "/bin/Debug/", "file")
+                end
+                return coroutine.create(function(co)
+                  local telescope = require("telescope")
+                  local pickers = require("telescope.pickers")
+                  local finders = require("telescope.finders")
+                  local conf = require("telescope.config").values
+                  local actions = require("telescope.actions")
+                  local action_state = require("telescope.actions.state")
+                  local cwd = vim.fn.getcwd()
+                  pickers.new({}, {
+                    prompt_title = "Select DLL",
+                    finder = finders.new_table({
+                      results = dlls,
+                      entry_maker = function(entry)
+                        return {
+                          value = entry,
+                          display = entry:gsub(cwd .. "/", ""),
+                          ordinal = entry,
+                        }
+                      end,
+                    }),
+                    sorter = conf.generic_sorter({}),
+                    attach_mappings = function(prompt_bufnr)
+                      actions.select_default:replace(function()
+                        actions.close(prompt_bufnr)
+                        local selection = action_state.get_selected_entry()
+                        coroutine.resume(co, selection.value)
+                      end)
+                      return true
+                    end,
+                  }):find()
+                end)
+              end,
+              cwd = vim.fn.getcwd,
+              stopAtEntry = false,
+            },
+            {
+              type = "coreclr",
+              name = "Attach to process",
+              request = "attach",
+              processId = require("dap.utils").pick_process,
+            },
+          }
+        '';
       };
     };
 
