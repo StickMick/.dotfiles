@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   vim = {
     viAlias = false;
     vimAlias = true;
@@ -14,9 +15,8 @@
 
     options = {
       shada = "'100,<50,s10,h"; # safe default enabling shada with common parameters
-      mouse = "a"; # enable mouse support in all modles
       number = true;
-      relativenumber = false;
+      relativenumber = true;
       clipboard = "unnamedplus";
       breakindent = true;
       undofile = true;
@@ -368,8 +368,8 @@
     autocmds = [
       {
         # Highlight when yanking (copying) text
-        event = ["TextYankPost"];
-        pattern = ["*"];
+        event = [ "TextYankPost" ];
+        pattern = [ "*" ];
         command = "lua vim.highlight.on_yank()";
         desc = "Highlight when yanking (copying) text";
       }
