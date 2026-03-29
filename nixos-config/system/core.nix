@@ -8,12 +8,13 @@
     ./audio.nix
     ./fonts.nix
     ./programs.nix
+    ./terminal.nix
     ./programming.nix
     ./services.nix
     ./users.nix
     ./virtualization.nix
     ./obs.nix
-    ./media.nix
+    #./media.nix
   ];
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -31,12 +32,6 @@
     dates = ["weekly"];
   };
 
-  system.autoUpgrade = {
-    enable = true;
-    flake = "/etc/nixos#hostname";
-    dates = "04:00";
-    allowReboot = false;
-  };
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
