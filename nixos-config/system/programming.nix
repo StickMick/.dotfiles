@@ -29,6 +29,7 @@ in {
     wezterm
 
     nodejs
+    tree-sitter
 
     unityhub
 
