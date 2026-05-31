@@ -2,7 +2,7 @@
   description = "NVF-based Neovim configuration (portable flake)";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nvf.url = "github:notashelf/nvf";
     flake-utils.url = "github:numtide/flake-utils";
   };

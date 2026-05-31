@@ -10,7 +10,9 @@
   };
 in {
   # Install firefox.
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -32,9 +34,10 @@ in {
   environment.systemPackages = with pkgs; [
     git
 
+    snes9x
+
     steam
     discord
-    spotify
     obsidian
     krita
     gcc
@@ -51,16 +54,16 @@ in {
 
     bolt-launcher
 
-    lutris
-    (lutris.override {
-      extraLibraries = pkgs: [
-        # List library dependencies here
-      ];
-      extraPkgs = pkgs: [
-        # List package dependencies here
-      ];
-    })
-    wine
+    # lutris
+    # (lutris.override {
+    #   extraLibraries = pkgs: [
+    #     # List library dependencies here
+    #   ];
+    #   extraPkgs = pkgs: [
+    #     # List package dependencies here
+    #   ];
+    # })
+    # wine
 
     #Terminal
 

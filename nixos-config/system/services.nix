@@ -23,6 +23,7 @@ in {
   boot.kernelParams = [
     "video=HDMI-A-2:3440x1440@60"
     "nvidia.env.preserve_video_memory_allocations=1"
+    "nvidia.NVreg_EnableGpuFirmware=0"
   ];
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -57,16 +58,29 @@ in {
     };
   };
 
+  environment.sessionVariables = {
+    __NV_PRIME_RENDER_OFFLOAD = "1";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
+  };
+
   hardware = {
     graphics = {
       enable = true;
     };
     nvidia = {
       open = true;
+      modesetting = {
+        enable = true;
+      };
+      nvidiaPersistenced = true;
       prime = {
         sync.enable = true;
         intelBusId = "PCI:0:2:0";
         nvidiaBusId = "PCI:1:0:0";
+      };
+      powerManagement = {
+        enable = true;
+        finegrained = false;
       };
     };
   };

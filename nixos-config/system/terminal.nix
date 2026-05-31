@@ -89,8 +89,5 @@ in {
     wget
     htop
     direnv # per-directory env variables
-
-    # Configured NVF Neovim from local flake
-    (builtins.getFlake (toString ../programs/nvf)).packages.${pkgs.system}.default
   ];
 }

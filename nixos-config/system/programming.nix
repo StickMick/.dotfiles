@@ -28,7 +28,11 @@ in {
     gcc
     wezterm
 
+    nodejs
+
     unityhub
+
+    neovim
 
     jetbrains.rider
     jetbrains.webstorm
