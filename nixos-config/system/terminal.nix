@@ -38,7 +38,7 @@ in {
     '';
   };
 
-  programs.bash.interactiveShellInit = commonShellHook;
+  # programs.bash.interactiveShellInit = commonShellHook;
 
 
   # Allow unfree packages

@@ -1,9 +1,10 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: let
-  unstable = import <nixos-unstable> {
+  pkgs-unstable = import inputs.nixpkgs-unstable {
     config = {
       allowUnfree = true;
     };
@@ -38,7 +39,7 @@ in {
 
     steam
     discord
-    obsidian
+    pkgs-unstable.obsidian
     krita
     gcc
     zip
