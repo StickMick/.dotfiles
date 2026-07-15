@@ -14,6 +14,7 @@
     ./users.nix
     ./virtualization.nix
     ./obs.nix
+    ./llm.nix
     #./media.nix
   ];
 
