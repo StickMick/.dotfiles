@@ -1,45 +1,34 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: let
-  zshrcContent =
-    builtins.replaceStrings
-    ["@OH_MY_ZSH@" "@ZSH_AUTOSUGGESTIONS@" "@ZSH_SYNTAX_HIGHLIGHTING@"]
-    [
-      "${pkgs.oh-my-zsh}/share/oh-my-zsh"
-      "${pkgs.zsh-autosuggestions}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
-      "${pkgs.zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-    ]
-    (builtins.readFile ../programs/zsh/devshell.zsh);
-
-  commonShellHook = ''
-    # Generate a per-session Zsh config
-    export ZDOTDIR=$(mktemp -d)
-    cat > "$ZDOTDIR/.zshrc" << 'ZSHEOF'
-    ${zshrcContent}
-    ZSHEOF
-
-    export SHELL="${pkgs.zsh}/bin/zsh"
-
-    if [ -z "$ZELLIJ" ]; then
-      exec zellij --config ${../programs/zellij/config.kdl}
-    fi
-    exec "$SHELL"
-  '';
-in {
-  system.activationScripts.zellijConfig = let
-    home = config.users.users.stick.home;
-  in {
-    text = ''
-      mkdir -p ${home}/.config/zellij
-      ln -sf ${home}/.dotfiles/nixos-config/programs/zellij/config.kdl \
-        ${home}/.config/zellij/config.kdl
-    '';
+  pkgs-unstable = import inputs.nixpkgs-unstable {
+    config = {
+      allowUnfree = true;
+    };
   };
+in {
 
-  # programs.bash.interactiveShellInit = commonShellHook;
-
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    enableBashCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+    histSize = 10000;
+    interactiveShellInit = builtins.readFile ../programs/zsh/devshell.zsh;
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "dirhistory"
+        "history"
+      ];
+    };
+  };
+  users.defaultUserShell = pkgs.zsh;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -49,12 +38,6 @@ in {
 
     # Interactive bash (with programmable completion support)
     bashInteractive
-
-    # Shell
-    zsh
-    oh-my-zsh
-    zsh-autosuggestions
-    zsh-syntax-highlighting
 
     # Terminal multiplexer
     zellij
