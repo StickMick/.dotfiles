@@ -21,6 +21,7 @@ in {
     interactiveShellInit = builtins.readFile ../programs/zsh/devshell.zsh;
     ohMyZsh = {
       enable = true;
+      theme = "robbyrussell";
       plugins = [
         "git"
         "dirhistory"
@@ -35,6 +36,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     ghostty
+    #kitty
 
     # Interactive bash (with programmable completion support)
     bashInteractive
