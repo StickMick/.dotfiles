@@ -18,6 +18,11 @@ in {
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
     histSize = 10000;
+    promptInit = ''
+      export ZDOTDIR=/etc
+
+      ${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin
+    '';
     interactiveShellInit = builtins.readFile ../programs/zsh/devshell.zsh;
     ohMyZsh = {
       enable = true;
