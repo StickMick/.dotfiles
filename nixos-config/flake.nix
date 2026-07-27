@@ -8,12 +8,16 @@
     nixpkgs-unstable = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
+    neovim-custom = {
+      url = "path:./programs/neovim";
+    };
   };
 
   outputs = inputs@{
     self,
     nixpkgs,
     nixpkgs-unstable,
+    neovim-custom,
     ...
   }: let
     inherit (self) outputs;

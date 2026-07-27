@@ -145,23 +145,17 @@ in {
     vscode
     xclip
     ripgrep
-    gnumake
     wget
     fd
     git-credential-oauth
     lazygit
     android-studio
-    gcc
-    wezterm
 
     nodejs
-    tree-sitter
-
-    unityhub
-
-    neovim
 
     jetbrains-toolbox
+
+    inputs.neovim-custom.packages.${pkgs.system}.default
 
     pkgs-unstable.dotnet-sdk_11
   ];
