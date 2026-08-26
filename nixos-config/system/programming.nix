@@ -153,6 +153,8 @@ in {
 
     nodejs
 
+    pkgs-unstable.devenv
+
     jetbrains-toolbox
 
     inputs.neovim-custom.packages.${pkgs.system}.default
