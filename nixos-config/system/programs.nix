@@ -45,6 +45,8 @@ in {
     zip
     unzip
 
+    pkgs-unstable.protonmail-desktop
+
     bambu-studio
     orca-slicer
 

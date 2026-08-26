@@ -3,13 +3,15 @@
   pkgs,
   inputs,
   ...
-}: let
+}:
+let
   pkgs-unstable = import inputs.nixpkgs-unstable {
     config = {
       allowUnfree = true;
     };
   };
-in {
+in
+{
 
   programs.zsh = {
     enable = true;
@@ -42,6 +44,8 @@ in {
   environment.systemPackages = with pkgs; [
     ghostty
     #kitty
+
+    fastfetch
 
     # Interactive bash (with programmable completion support)
     bashInteractive
