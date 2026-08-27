@@ -14,6 +14,7 @@
     ./users.nix
     ./virtualization.nix
     ./obs.nix
+    ./fullfeedrss.nix
     #./llm.nix
     #./media.nix
   ];
