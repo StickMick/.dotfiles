@@ -38,7 +38,6 @@ in {
     snes9x
 
     cliamp
-    feedr
 
     steam
     discord
