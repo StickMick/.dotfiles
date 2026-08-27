@@ -37,6 +37,9 @@ in {
 
     snes9x
 
+    cliamp
+    feedr
+
     steam
     discord
     pkgs-unstable.obsidian
