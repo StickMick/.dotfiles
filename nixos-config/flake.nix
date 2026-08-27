@@ -11,9 +11,6 @@
     neovim-custom = {
       url = "path:./programs/neovim";
     };
-    fulltext-rss-custom = {
-      url = "path:./programs/fulltext-rss";
-    };
   };
 
   outputs = inputs@{
@@ -21,7 +18,6 @@
     nixpkgs,
     nixpkgs-unstable,
     neovim-custom,
-    fulltext-rss-custom,
     ...
   }: let
     inherit (self) outputs;
@@ -31,7 +27,7 @@
     nixosConfigurations = {
       nixos = lib.nixosSystem {
         specialArgs = {
-          inherit inputs system fulltext-rss-custom;
+          inherit inputs system;
         };
         modules = [
           ./system/core.nix
