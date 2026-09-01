@@ -63,12 +63,15 @@ in {
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
   };
 
+  services.thermald.enable = true;
+
   hardware = {
     nvidia = {
       open = true;
       modesetting = {
         enable = true;
       };
+      powerManagement.enable = true;
       nvidiaPersistenced = true;
       prime = {
         intelBusId = "PCI:0:2:0";

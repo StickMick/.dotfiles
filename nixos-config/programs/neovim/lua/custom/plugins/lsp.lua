@@ -112,6 +112,7 @@ return {
 				filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 			})
 
+			-- dotnet tool install --global roslyn-language-server --prerelease
 			vim.lsp.config("roslyn_ls", {
 				filetypes = { "cs", "vb", "razor" },
 			})
