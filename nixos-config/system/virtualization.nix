@@ -1,6 +1,10 @@
 
 { config, pkgs, inputs, system, ... }:
 {
+  imports = [
+    ../modules/containers/tessellate.nix
+  ];
+
   # Enable dconf (System Management Tool)
   programs.dconf.enable = true;
 
